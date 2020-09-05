@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const config = require('./config/db')
+const config = require("./config/db");
 
 //connect to db
 mongoose.connect(config.DB_URL, {
@@ -9,10 +9,10 @@ mongoose.connect(config.DB_URL, {
   useUnifiedTopology: true,
 });
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error'));
-db.once('open', ()=>{
-    console.log('Connected to MONGO');
-})
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", () => {
+  console.log("Connected to MONGO");
+});
 
 const app = express();
 
@@ -23,9 +23,9 @@ app.set("view engine", "ejs");
 //set public
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get('/', (req,res)=>{
-    res.send("Working");
-})
+app.get("/", (req, res) => {
+  res.render("index");
+});
 
 //start server
 const port = 3000;
