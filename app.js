@@ -45,6 +45,9 @@ app.set("view engine", "ejs");
 // set public
 app.use(express.static(path.join(__dirname, "public")));
 
+// set global errors variable
+app.locals.errors = null;
+
 // set routes
 app.use("/", require("./routes/pages"));
 app.use("/admin", require("./routes/admin_pages"));
